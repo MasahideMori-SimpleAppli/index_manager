@@ -1,3 +1,6 @@
+## 1.0.0
+* Changed visibility of variables.
+
 ## 0.0.2
 
 * Update readme.

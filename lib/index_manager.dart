@@ -8,8 +8,8 @@
 class IndexManager {
   String get className => 'IndexManager';
 
-  String get version => '1';
-  Map<String, int?> indexMap = {};
+  String get version => '2';
+  final Map<String, int?> _indexMap = {};
   static const String _saveKey = 'index_map';
 
   /// Constructor
@@ -26,13 +26,13 @@ class IndexManager {
     d['class_name'] = className;
     d['version'] = version;
     Map<String, int?> mIndexMap = {};
-    for (String i in indexMap.keys) {
+    for (String i in _indexMap.keys) {
       if (nonSaveKeys != null) {
         if (!nonSaveKeys.contains(i)) {
-          mIndexMap[i] = indexMap[i];
+          mIndexMap[i] = _indexMap[i];
         }
       } else {
-        mIndexMap[i] = indexMap[i];
+        mIndexMap[i] = _indexMap[i];
       }
     }
     d[_saveKey] = mIndexMap;
@@ -61,14 +61,14 @@ class IndexManager {
   /// * [isAlwaysInitialize] : If true, always set initialValue.
   int? getIndex(String name,
       {int? initialValue = 0, bool isAlwaysInitialize = false}) {
-    if (indexMap.containsKey(name)) {
+    if (_indexMap.containsKey(name)) {
       if (isAlwaysInitialize) {
-        indexMap[name] = initialValue;
+        _indexMap[name] = initialValue;
       }
-      return indexMap[name];
+      return _indexMap[name];
     } else {
-      indexMap[name] = initialValue;
-      return indexMap[name];
+      _indexMap[name] = initialValue;
+      return _indexMap[name];
     }
   }
 
@@ -77,7 +77,7 @@ class IndexManager {
   ///
   /// (ja)指定名のインデックス変数が生成済みならばそれに代入し、無ければ新規生成した変数に代入します。
   void setIndex(String name, int? value) {
-    indexMap[name] = value;
+    _indexMap[name] = value;
   }
 
   /// (en)Returns a managed map.
@@ -86,6 +86,6 @@ class IndexManager {
   /// (ja)管理中のマップを返します。
   /// 通常はこれを直接呼び出さないでください。
   Map<String, int?> getAllIndex() {
-    return indexMap;
+    return _indexMap;
   }
 }

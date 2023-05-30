@@ -1,6 +1,6 @@
 name: index_manager
 description: This package manages multiple indexes identified by name and supports serialization and deserialization.
-version: 0.0.2
+version: 1.0.0
 repository: https://github.com/MasahideMori-SimpleAppli/index_manager
 
 environment:
