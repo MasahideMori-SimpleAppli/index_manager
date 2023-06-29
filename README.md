@@ -1,5 +1,8 @@
 # index_manager
 
+## Note
+This package has been merged into the [simple_managers](https://pub.dev/packages/simple_managers) package. This package is now deprecated.
+
 ## Overview
 This package manages multiple indexes identified by name and supports serialization and deserialization.  
 It's essentially just a wrapper around Map, which is only slightly useful in if serialization is required.
